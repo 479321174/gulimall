@@ -17,6 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+        <mysql.version>5.1.47</mysql.version>
     </properties>
 
     <dependencies>
@@ -25,7 +26,21 @@
             <groupId>com.atguigu</groupId>
             <artifactId>gulimall-core</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId> org.springframework.cloud</groupId>
+                        <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
+        <!-- 只要引入了jdbc：starter模块默认数据库驱动的版本
+        是由springBoot版本仲裁中心控制的
+        换数据库驱动-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
